@@ -79,57 +79,52 @@ export interface SupramarkStyles {
  * 默认样式
  */
 export const defaultStyles = StyleSheet.create({
+  // 各 block 之间的垂直间距统一由父容器（root / list）的 gap 提供，
+  // block 自身不再带 marginBottom —— 否则最末一个 block 会留下 trailing margin，
+  // 把容器（如聊天气泡）的底部内边距撑大，造成四边内边距不一致。
   paragraph: {
-    marginBottom: 8,
     lineHeight: 20,
   },
   h1: {
     fontSize: 24,
     fontWeight: '700',
-    marginBottom: 12,
   },
   h2: {
     fontSize: 20,
     fontWeight: '600',
-    marginBottom: 10,
   },
   h3: {
     fontSize: 18,
     fontWeight: '600',
-    marginBottom: 8,
   },
   h4: {
     fontSize: 16,
     fontWeight: '500',
-    marginBottom: 6,
   },
   h5: {
     fontSize: 14,
     fontWeight: '500',
-    marginBottom: 4,
   },
   h6: {
     fontSize: 12,
     fontWeight: '500',
-    marginBottom: 4,
   },
   codeBlock: {
     backgroundColor: '#f5f5f5',
     padding: 8,
     borderRadius: 4,
-    marginBottom: 8,
   },
   code: {
     fontFamily: 'Menlo',
     fontSize: 12,
   },
+  // 列表项之间的间距由 list 容器的 gap 提供，末项不再留 trailing margin。
   list: {
-    marginBottom: 8,
+    gap: 4,
   },
   listItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 4,
   },
   bullet: {
     marginRight: 6,
@@ -144,7 +139,6 @@ export const defaultStyles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#ccc',
-    marginBottom: 8,
   },
   diagramPlaceholderText: {
     fontSize: 12,
@@ -156,7 +150,6 @@ export const defaultStyles = StyleSheet.create({
     borderColor: '#dee2e6',
     borderRadius: 8,
     padding: 16,
-    marginBottom: 12,
   },
   mapCardHeader: {
     marginBottom: 12,
@@ -276,7 +269,6 @@ export const defaultStyles = StyleSheet.create({
     maxWidth: '100%',
     borderWidth: 1,
     borderColor: '#ddd',
-    marginBottom: 12,
   },
   tableRow: {
     flexDirection: 'row',
@@ -305,8 +297,12 @@ export const defaultStyles = StyleSheet.create({
   textRight: {
     textAlign: 'right',
   },
+  // 顶层 block 之间的垂直间距统一由 gap 提供：
+  // gap 只作用于相邻 block 之间，最末一个 block 天然不带 trailing margin，
+  // 从而避免容器（如聊天气泡）底部内边距被末段段落等的 marginBottom 撑大。
   root: {
-    // 默认无样式，用户可自定义
+    flexDirection: 'column',
+    gap: 8,
   },
 });
 
@@ -420,7 +416,7 @@ export const darkThemeStyles: SupramarkStyles = {
     color: '#e6edf3',
   },
   root: {
-    backgroundColor: '#0d1117',
+    // backgroundColor: '#0d1117',
   },
 };
 
@@ -430,6 +426,6 @@ export const darkThemeStyles: SupramarkStyles = {
 export const lightThemeStyles: SupramarkStyles = {
   // Light 主题使用默认样式，这里可以做一些微调
   root: {
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
   },
 };

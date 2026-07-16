@@ -219,16 +219,15 @@ function buildRenderOptions(
 }
 
 const styles = StyleSheet.create({
-  diagram: {
-    marginBottom: 8,
-  },
+  // 各状态作为顶层 block 时，与相邻 block 的间距由 Supramark root 的 gap 提供，
+  // 这里不再自带 marginBottom，避免末位图表留下 trailing margin。
+  diagram: {},
   placeholder: {
     width: '100%',
     padding: 8,
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#ccc',
-    marginBottom: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

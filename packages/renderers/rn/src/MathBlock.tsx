@@ -87,9 +87,9 @@ export const MathBlock: React.FC<MathBlockProps> = ({ node }) => {
 };
 
 const styles = StyleSheet.create({
-  mathContainer: {
-    marginVertical: 8,
-  },
+  // 各状态作为顶层 block 时，与相邻 block 的间距由 Supramark root 的 gap 提供，
+  // 这里不再自带 marginVertical，避免末位公式块留下 trailing margin。
+  mathContainer: {},
   placeholderText: {
     fontSize: 14,
     color: '#666',
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#ccc',
-    marginVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -108,7 +107,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     padding: 8,
     borderRadius: 4,
-    marginVertical: 8,
   },
   codeText: {
     fontFamily: 'Menlo',
